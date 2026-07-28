@@ -12,8 +12,7 @@ class LocalPartnerTest {
 
         String link = partner.getTrackedLink(3L);
 
-        // We're checking the generated link actually contains both IDs,
-        // which is what makes it "tracked" - proof of who clicked what.
+        // checking the link actually contains both IDs,
         assertTrue(link.contains("3"), "Link should contain the tourist's ID");
         assertTrue(link.contains("7"), "Link should contain the partner's ID");
     }

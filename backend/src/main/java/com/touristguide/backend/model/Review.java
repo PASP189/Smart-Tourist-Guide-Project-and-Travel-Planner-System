@@ -23,9 +23,7 @@ public class Review {
     @JsonIgnore
     private LocalPartner partner;
 
-    // @Min and @Max together mean: this number has to land between 1 and 5.
-    // Nobody can submit a rating of 0, -3, or 999 anymore - the request
-    // gets rejected automatically before it ever reaches your database.
+
     @Min(value = 1, message = "Rating must be at least 1")
     @Max(value = 5, message = "Rating must be at most 5")
     private int rating;
@@ -83,5 +81,5 @@ public class Review {
 
     private boolean verified;
 
-    // Getters and setters unchanged - keep whatever IntelliJ generated earlier
+
 }

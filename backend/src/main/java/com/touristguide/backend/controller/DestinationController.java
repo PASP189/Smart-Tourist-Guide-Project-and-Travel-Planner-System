@@ -10,11 +10,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/destinations")
+@CrossOrigin(origins = "*")
 public class DestinationController {
 
     private final DestinationRepository destinationRepository;
 
-    // Constructor - Spring automatically provides the repository here
+
     public DestinationController(DestinationRepository destinationRepository) {
         this.destinationRepository = destinationRepository;
     }

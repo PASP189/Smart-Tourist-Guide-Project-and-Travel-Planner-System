@@ -10,6 +10,7 @@ import com.touristguide.backend.exception.ResourceNotFoundException;
 
 @RestController
 @RequestMapping("/api/budget")
+@CrossOrigin(origins = "*")
 public class BudgetTrackerController {
 
     private final BudgetTrackerRepository budgetTrackerRepository;
@@ -34,7 +35,7 @@ public class BudgetTrackerController {
         return budget;
     }
 
-    // Update spent amount (e.g. after a booking is confirmed)
+    // Update spent amount (after a booking is confirmed)
     @PutMapping("/{budgetId}/spend")
     public BudgetTracker addSpending(@PathVariable Long budgetId, @RequestParam float amount) {
         BudgetTracker budget = budgetTrackerRepository.findById(budgetId)

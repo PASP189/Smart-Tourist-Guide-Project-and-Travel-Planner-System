@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 
 @Entity
 public class ReferralTransaction {
-    private String refCode;
-    private Long id;
-    private Status status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String refCode;
 
 
     @ManyToOne
@@ -24,6 +24,7 @@ public class ReferralTransaction {
     private LocalPartner partner;
 
     @Enumerated(EnumType.STRING)
+    private Status status;
 
     private float feeAmount;
 

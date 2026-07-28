@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/referrals")
+@CrossOrigin(origins = "*")
 public class ReferralTransactionController {
 
     private final ReferralTransactionRepository referralTransactionRepository;
@@ -42,7 +43,7 @@ public class ReferralTransactionController {
         return referralTransactionRepository.save(transaction);
     }
 
-    // Vendor confirms the booking actually happened
+    // Vendor confirms the booking  happened
     @PutMapping("/{transactionId}/confirm")
     public ReferralTransaction confirmBooking(@PathVariable Long transactionId) {
         ReferralTransaction transaction = referralTransactionRepository.findById(transactionId)
@@ -54,7 +55,7 @@ public class ReferralTransactionController {
         return referralTransactionRepository.save(transaction);
     }
 
-    // Flag a transaction with no confirmation (from your activity diagram: "No confirmation -> flagged")
+    // Flag a transaction with no confirmation
     @PutMapping("/{transactionId}/flag")
     public ReferralTransaction flagTransaction(@PathVariable Long transactionId) {
         ReferralTransaction transaction = referralTransactionRepository.findById(transactionId)
@@ -64,13 +65,13 @@ public class ReferralTransactionController {
         return referralTransactionRepository.save(transaction);
     }
 
-    // View all referral activity for a partner (their revenue dashboard data)
+    // View all referral activity for a partner as their revenue dashboard data
     @GetMapping("/partner/{partnerId}")
     public List<ReferralTransaction> getTransactionsForPartner(@PathVariable Long partnerId) {
         return referralTransactionRepository.findByPartnerId(partnerId);
     }
 
-    // View a tourist's own referral/booking history
+    // View a tourist's referral/booking history
     @GetMapping("/tourist/{touristId}")
     public List<ReferralTransaction> getTransactionsForTourist(@PathVariable Long touristId) {
         return referralTransactionRepository.findByTouristId(touristId);

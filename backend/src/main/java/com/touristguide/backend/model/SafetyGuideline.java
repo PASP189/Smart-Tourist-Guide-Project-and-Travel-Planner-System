@@ -20,7 +20,7 @@ public class SafetyGuideline {
     @ElementCollection
     private List<String> warnings = new ArrayList<>();
 
-    private String flagStatus; // "safe", "caution", "avoid"
+    private String flagStatus; // safe, caution, avoid
 
     public Long getId() {
         return id;

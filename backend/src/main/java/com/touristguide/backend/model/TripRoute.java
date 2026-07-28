@@ -11,7 +11,7 @@ public class TripRoute {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String travelMode; // "walking", "driving", "transit"
+    private String travelMode; // walking, driving, transit
     private float totalDistanceKm;
     private int totalDurationMin;
     private String polylineEncoded;
@@ -26,8 +26,8 @@ public class TripRoute {
     private List<Destination> orderedStops = new ArrayList<>();
 
     public void calculateRoute() {
-        // call a routing API (e.g. Google Directions) here,
-        // then set totalDistanceKm, totalDurationMin, polylineEncoded
+        /* call a routing API (e.g. Google Directions) here,
+        then set totalDistanceKm, totalDurationMin*/
     }
 
     public void optimizeStopOrder() {
@@ -83,8 +83,8 @@ public class TripRoute {
     }
 
     public boolean isRealisticForDuration(int days) {
-        int estimatedMinutesNeeded = orderedStops.size() * 120; // rough: 2 hrs/stop
-        int availableMinutes = days * 8 * 60; // 8 active hours/day
+        int estimatedMinutesNeeded = orderedStops.size() * 120;
+        int availableMinutes = days * 8 * 60;
         return estimatedMinutesNeeded <= availableMinutes;
     }
 

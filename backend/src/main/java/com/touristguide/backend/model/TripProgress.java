@@ -7,6 +7,8 @@ import java.util.List;
 @Entity
 public class TripProgress {
 
+    private float percentComplete;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,7 +19,6 @@ public class TripProgress {
     @ElementCollection
     private List<LocationPing> checkpoints = new ArrayList<>();
 
-    private float percentComplete;
 
     public String getCurrentStatus() {
         String nearest = (currentNearest != null) ? currentNearest.getName() : "none";

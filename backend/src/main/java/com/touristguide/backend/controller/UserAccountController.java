@@ -11,6 +11,7 @@ import com.touristguide.backend.exception.ResourceNotFoundException;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "*")
 public class UserAccountController {
 
     private final UserAccountRepository userAccountRepository;
@@ -52,7 +53,6 @@ public class UserAccountController {
 
         user.setName(updatedData.getName());
         user.setEmail(updatedData.getEmail());
-        // Password intentionally NOT updated here - handle separately with hashing if needed
 
         return userAccountRepository.save(user);
     }

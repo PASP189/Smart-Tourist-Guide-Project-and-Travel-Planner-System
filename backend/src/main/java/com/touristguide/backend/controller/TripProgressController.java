@@ -8,6 +8,7 @@ import com.touristguide.backend.exception.ResourceNotFoundException;
 
 @RestController
 @RequestMapping("/api/progress")
+@CrossOrigin(origins = "*")
 public class TripProgressController {
 
     private final TripProgressRepository tripProgressRepository;
@@ -27,7 +28,7 @@ public class TripProgressController {
         return tripProgressRepository.save(progress);
     }
 
-    // Update nearest destination + percent complete (simulating a location ping)
+    // Update nearest destination + percent complete
     @PutMapping("/{progressId}/checkpoint")
     public TripProgress updateCheckpoint(@PathVariable Long progressId,
                                          @RequestParam Long nearestDestinationId,
@@ -44,7 +45,7 @@ public class TripProgressController {
         return tripProgressRepository.save(progress);
     }
 
-    // Get current status (uses your getCurrentStatus() method)
+    // Get current status (uses  getCurrentStatus() method)
     @GetMapping("/{progressId}/status")
     public String getStatus(@PathVariable Long progressId) {
         TripProgress progress = tripProgressRepository.findById(progressId)
@@ -52,7 +53,7 @@ public class TripProgressController {
         return progress.getCurrentStatus();
     }
 
-    // Check if near a specific destination (triggers safety alert logic)
+    // Check if near a specific destination
     @GetMapping("/{progressId}/near/{destinationId}")
     public boolean isNearDestination(@PathVariable Long progressId, @PathVariable Long destinationId) {
         TripProgress progress = tripProgressRepository.findById(progressId)

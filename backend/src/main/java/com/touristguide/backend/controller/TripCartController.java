@@ -10,6 +10,7 @@ import com.touristguide.backend.exception.ResourceNotFoundException;
 
 @RestController
 @RequestMapping("/api/tripcarts")
+@CrossOrigin(origins = "*")
 public class TripCartController {
 
     private final TripCartRepository tripCartRepository;
@@ -35,7 +36,7 @@ public class TripCartController {
         return tripCartRepository.save(cart);
     }
 
-    // Get all trip carts belonging to a user
+    // Get all trip carts belong to a user
     @GetMapping("/user/{userId}")
     public List<TripCart> getCartsForUser(@PathVariable Long userId) {
         return tripCartRepository.findByOwnerId(userId);

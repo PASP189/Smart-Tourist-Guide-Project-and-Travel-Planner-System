@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/partners")
+@CrossOrigin(origins = "*")
 public class LocalPartnerController {
 
     private final LocalPartnerRepository localPartnerRepository;
